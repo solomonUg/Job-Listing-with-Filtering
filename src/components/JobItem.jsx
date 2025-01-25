@@ -1,6 +1,14 @@
-import React from 'react'
 
-function JobItem({job}) {
+function JobItem({job, setCategory}) {
+
+    function handleClick (jobProperty) {
+        setCategory(prevCategory => 
+            prevCategory.includes(jobProperty) 
+                ? prevCategory 
+                : [...prevCategory, jobProperty]
+        );
+    }
+    
   return (
     <div className={`w-full rounded-md h-[100px] bg-white shadow-lg shadow-[#c4e5e6] flex justify-center items-center ${job.featured? "border-l-4 border-l-[#64babb] p-4 ": ""} `}>
         <div className='w-full  flex justify-between'>
@@ -20,7 +28,7 @@ function JobItem({job}) {
                         <h2 className='text-sm font-semibold text-gray-800'>{job.position}</h2>
                     </div>
                     <ul className='flex text-xs text-gray-500 list-disc gap-4'>
-                        <span className='list-none'><li>{job.postedAt}</li></span>
+                        <span className='list-none' ><li>{job.postedAt}</li></span>
                         <li>{job.contract}</li>
                         <li>{job.location}</li>
                     </ul>
@@ -28,9 +36,9 @@ function JobItem({job}) {
             </div>
 
             <div className=' flex text-xs w-[50%] items-center mr-6 text-[#64babb] font-bold gap-6 justify-end' >
-                <div className='bg-[#edf6f7] p-1 rounded-md'>{job.role}</div>
-                {job.languages.map((lang)=><div className='bg-[#edf6f7] p-1 rounded-md'>{lang}</div>)}
-                {job.tools.map((tool)=><div className='bg-[#edf6f7] p-1 rounded-md'>{tool}</div>)}
+                <div className='bg-[#edf6f7] p-1 rounded-md cursor-pointer' onClick={()=>handleClick(job.role)}>{job.role}</div>
+                {job.languages.map((lang)=><div className='bg-[#edf6f7] p-1 rounded-md cursor-pointer' onClick={()=>handleClick(lang)}>{lang}</div>)}
+                {job.tools.map((tool)=><div className='bg-[#edf6f7] p-1 rounded-md cursor-pointer' onClick={()=>handleClick(tool)}>{tool}</div>)}
             </div>
         </div>
     </div>
