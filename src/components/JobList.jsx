@@ -29,9 +29,9 @@ const filteredJobs = category.length == 0
 
 
   return (
-    <div className="w-[80%] flex flex-col gap-4 mt-12 relative">
+    <div className="w-[80%] flex flex-col gap-12 mt-12 relative">
       {/* container element for hold selected job categories */}
-      <div className={`bg-slate-50 ${category ==""? "hidden": "flex"} items-center justify-center shadow-md shadow-[#c4e5e6] w-full h-[45px] rounded-md absolute -top-[70px]`}>
+      <div className={`bg-slate-50 ${category ==""? "hidden": "flex "} items-center justify-center shadow-md shadow-[#c4e5e6] w-full h-[45px] rounded-md absolute -top-[70px] pr-2`}>
         <div className=" justify-between flex w-[90%] text-xs font-bold text-[#64babb]">
           <div className="flex gap-2">
             {category.map((cat) => (
